@@ -246,4 +246,20 @@ defmodule Process.Managed do
   def to_pid(process(pid: pid)) do
     pid
   end
+
+  def pid <- msg when is_record pid, Process.Managed do
+    Kernel.<-(pid.to_pid, msg)
+  end
+
+  def pid <- msg do
+    Kernel.<-(pid, msg)
+  end
+
+  @doc false
+  defmacro __using__(_opts) do
+    quote do
+      import Kernel, except: [<-: 2]
+      import Process.Managed, only: [<-: 2]
+    end
+  end
 end
