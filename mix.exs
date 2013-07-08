@@ -3,7 +3,7 @@ defmodule ManagedProcess.Mixfile do
 
   def project do
     [ app: :managed_process,
-      version: "0.0.1",
+      version: "0.1.0",
       deps: deps ]
   end
 
