@@ -271,3 +271,9 @@ defmodule Process.Managed do
     end
   end
 end
+
+defimpl Inspect, for: Process.Managed do
+  def inspect(proc, opts) do
+    Kernel.inspect(proc.to_pid, opts)
+  end
+end
