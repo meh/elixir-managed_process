@@ -14,7 +14,7 @@ defmodule Process.Managed do
 
   @opaque t :: record
 
-  defrecordp :process, pid: nil, reference: nil
+  defrecordp :process, __MODULE__, pid: nil, reference: nil
 
   @doc """
   Returns the managed pid of a new process started by the application of `fun`.
