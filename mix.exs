@@ -4,6 +4,7 @@ defmodule ManagedProcess.Mixfile do
   def project do
     [ app: :managed_process,
       version: "0.1.0",
+      elixir: "~> 0.12.2",
       deps: deps ]
   end
 

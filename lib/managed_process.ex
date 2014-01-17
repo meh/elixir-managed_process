@@ -255,19 +255,19 @@ defmodule Process.Managed do
     pid
   end
 
-  def pid <- msg when is_record pid, Process.Managed do
-    Kernel.<-(pid.to_pid, msg)
+  def send(pid, msg) when pid |> is_record Process.Managed do
+    Kernel.send(pid.to_pid, msg)
   end
 
-  def pid <- msg do
-    Kernel.<-(pid, msg)
+  def send(pid, msg) do
+    Kernel.send(pid, msg)
   end
 
   @doc false
   defmacro __using__(_opts) do
     quote do
-      import Kernel, except: [<-: 2]
-      import Process.Managed, only: [<-: 2]
+      import Kernel, except: [send: 2]
+      import Process.Managed, only: [send: 2]
     end
   end
 end
